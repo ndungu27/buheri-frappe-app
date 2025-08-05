@@ -1,0 +1,32 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-07-29 12:31:43.711806",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "day_of_week"
+ ],
+ "fields": [
+  {
+   "fieldname": "day_of_week",
+   "fieldtype": "Link",
+   "label": "day of week",
+   "options": "day of week"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-07-29 13:01:02.030169",
+ "modified_by": "Administrator",
+ "module": "Buheri",
+ "name": "week",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
