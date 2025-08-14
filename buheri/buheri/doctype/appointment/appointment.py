@@ -18,6 +18,17 @@ class Appointment(Document):
             })
 			if leave_exists:
 				frappe.throw(f"Doctor {self.doctor} is on leave on {self.appointment_date}. Cannot book appointment.")
+
+			doc_unavailable = frappe.db.exists({
+				"doctype" :"Doctor",
+				"name" :self.doctor,
+				"status": "Unavailable"
+			
+			})
+			if doc_unavailable:
+				frappe.throw(f"Doctor {self.doctor} is unavailable on {self.appointment_date}.Cannot book appointment")
+
+
 			
 
 

@@ -1,6 +1,6 @@
 import frappe
-from frappe.model.document import Document
 from frappe.utils import nowdate, get_weekday
+
 
 @frappe.whitelist(allow_guest=True)
 def get_upcoming_availability(doctor):
@@ -17,22 +17,42 @@ def get_upcoming_availability(doctor):
         "Sunday": 6
     }
 
-    today_index = get_weekday(nowdate())
+    today_str = get_weekday(nowdate()) 
+    today_index = days_map.get(today_str)
+    if today_index is None:
+        frappe.throw(f"Invalid weekday name '{today_str}' returned from get_weekday")
 
-    doc = frappe.get_doc("Doctor Availability", {"doctor": doctor})
+    availability_names = frappe.get_all(
+        "Doctor Availability",
+        filters={"doctor": doctor},
+        pluck="name"
+    )
+
+    if not availability_names:
+        return {"doctor": doctor, "upcoming_availability": []}
+
+    doc = frappe.get_doc("Doctor Availability", availability_names[0])
+
+    days_available = getattr(doc, "days_available", [])
+    if not days_available:
+        return {"doctor": doctor, "upcoming_availability": []}
 
     upcoming_days = []
 
-   
-    for child in doc.week:
+    for child in days_available:
         day_name = frappe.get_value("day of week", child.day_of_week, "name")
-
+        if not day_name:
+            continue
+        day_name = day_name.capitalize()
         day_index = days_map.get(day_name)
-        if day_index is not None and day_index >= today_index:
+        if day_index is None:
+            continue
+
+        if day_index >= today_index:
             upcoming_days.append({
                 "day_of_week": day_name,
-                "start_time": doc.start_time,
-                "end_time": doc.end_time
+                "start_time": getattr(child, 'start_time', doc.start_time),
+                "end_time": getattr(child, 'end_time', doc.end_time)
             })
 
     upcoming_days.sort(key=lambda d: days_map[d["day_of_week"]])
@@ -41,3 +61,4 @@ def get_upcoming_availability(doctor):
         "doctor": doctor,
         "upcoming_availability": upcoming_days
     }
+

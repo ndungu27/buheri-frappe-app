@@ -1,25 +1,54 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "APR.###",
  "creation": "2025-08-05 14:26:49.806977",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_kw4n"
+  "appointment",
+  "reminder_type",
+  "reminder_time",
+  "sent_status"
  ],
  "fields": [
   {
-   "fieldname": "section_break_kw4n",
-   "fieldtype": "Section Break"
+   "fieldname": "appointment",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "appointment",
+   "options": "Appointment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reminder_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "reminder type",
+   "options": "Email\nSMS",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reminder_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "reminder time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sent_status",
+   "fieldtype": "Data",
+   "label": "sent status"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-05 14:26:49.806977",
+ "modified": "2025-08-12 12:18:28.234798",
  "modified_by": "Administrator",
  "module": "Buheri",
  "name": "Appointment Reminder",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
@@ -38,5 +67,6 @@
  "row_format": "Dynamic",
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

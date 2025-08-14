@@ -5,6 +5,17 @@ app_description = "Healthcare Appointment Scheduling System"
 app_email = "njugunaerick616@gmail.com"
 app_license = "mit"
 
+
+
+app_include_js=["/appointment/get_appointment.js"]
+
+# doc_events = {
+#     "Doctor Availability": {
+#         "on_update": "buheri.buheri.doctype.doctor_availability.doctor_availability.DoctorAvailability.on_update"
+#     }
+# }
+
+
 # Apps
 # ------------------
 

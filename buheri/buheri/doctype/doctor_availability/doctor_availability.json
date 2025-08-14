@@ -6,20 +6,12 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "link_to_doctor",
+  "doctor",
   "days_available",
   "start_time",
   "end_time"
  ],
  "fields": [
-  {
-   "fieldname": "link_to_doctor",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "doctor",
-   "options": "Doctor",
-   "reqd": 1
-  },
   {
    "fieldname": "start_time",
    "fieldtype": "Time",
@@ -41,12 +33,20 @@
    "label": "days available",
    "options": "week",
    "reqd": 1
+  },
+  {
+   "fieldname": "doctor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "doctor",
+   "options": "Doctor",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-31 13:14:26.502185",
+ "modified": "2025-08-07 09:42:18.685978",
  "modified_by": "Administrator",
  "module": "Buheri",
  "name": "Doctor Availability",
