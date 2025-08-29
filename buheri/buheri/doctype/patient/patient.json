@@ -51,8 +51,7 @@
    "fieldname": "phone_number",
    "fieldtype": "Phone",
    "in_list_view": 1,
-   "label": "phone number",
-   "reqd": 1
+   "label": "phone number"
   },
   {
    "fieldname": "identification",
@@ -100,7 +99,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-25 09:49:07.550629",
+ "modified": "2025-08-29 12:56:01.669446",
  "modified_by": "Administrator",
  "module": "Buheri",
  "name": "Patient",

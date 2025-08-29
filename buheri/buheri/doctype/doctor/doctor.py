@@ -3,6 +3,7 @@ import frappe
 from frappe.utils import today
 import datetime
 
+
 class Doctor(Document):
 
     def update_status_based_on_availability(self):
