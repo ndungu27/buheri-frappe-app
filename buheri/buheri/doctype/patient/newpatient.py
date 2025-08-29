@@ -15,11 +15,11 @@ def register_patient():
     registration_date =data.get('registration_date')
     patient_status = data.get('patient_status')
 
-    # Basic validation
+    # validation
     if not patient_name or not last_name or not gender or not dob:
         frappe.throw(_("Missing required fields. Please provide patient_name, last_name, gender, and dob."))
 
-    # Create Patient document
+    # Create Patient doc
     patient = frappe.get_doc({
         "doctype": "Patient",
         "patient_name": patient_name,
